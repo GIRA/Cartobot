@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="debug"><source path="D:\usb-serial-for-android-master\usb-serial-for-android-master\usbSerialForAndroid\build\intermediates\bundles\debug\assets"/></dataSet><dataSet config="main"><source path="D:\usb-serial-for-android-master\usb-serial-for-android-master\usbSerialForAndroid\src\androidTest\assets"/></dataSet></merger>
