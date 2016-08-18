@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/My First App/My First App.iml" filepath="$PROJECT_DIR$/My First App/My First App.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MyFirstApp.iml" filepath="$PROJECT_DIR$/MyFirstApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidToArduino.iml" filepath="$PROJECT_DIR$/AndroidToArduino.iml" />
+      <module fileurl="file://$PROJECT_DIR$/App/App.iml" filepath="$PROJECT_DIR$/App/App.iml" />
     </modules>
   </component>
 </project>
