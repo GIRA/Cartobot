@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -27,50 +28,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         text = (TextView) findViewById(R.id.textView);
         b = (Button) findViewById(R.id.LedButton);
         c = (Button) findViewById(R.id.connectButton);
-        mov = (Button) findViewById(R.id.movingButton);
-        Smov = (Button) findViewById(R.id.StopButton);
 
         final Activity me = this;
-        Smov.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                move = false;
-                Stop();
 
-            }
-        });
 
-        mov.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Thread th = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try{
-                        while (move) {
-                            if (fwd) {
-                                Left();
-                            } else {
-                                Right();
-                            }
-                            fwd = !fwd;
-                          Thread.sleep(1000);
-                        }
-                        Stop();
-                        }
-                      catch (Exception e) {
-                            text.append("\n" + e.getMessage());
-                        }}
-                });
-                move = true;
-                th.start();
-            }
-        });
+
 
 
         c.setOnClickListener(new View.OnClickListener() {
@@ -84,9 +53,32 @@ public class MainActivity extends AppCompatActivity {
                     arduino.pinMode(7, ArduinoFirmata.OUTPUT);
                     arduino.pinMode(9, ArduinoFirmata.OUTPUT);
                     arduino.pinMode(10, ArduinoFirmata.OUTPUT);
-                    arduino.pinMode(11, ArduinoFirmata.OUTPUT);
-                    arduino.pinMode(13, ArduinoFirmata.OUTPUT);
+                    arduino.pinMode(11, ArduinoFirmata.PWM);
+                    arduino.pinMode(12, ArduinoFirmata.OUTPUT);
 
+                    Thread th = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try{
+                                while (true) {
+                                   final int temp =arduino.analogRead(1);
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            text.setText(String.valueOf(temp));
+                                        }
+                                    });
+                                    arduino.analogWrite(11, temp/4);
+
+                                    Thread.sleep(10);
+                                }
+                            }
+                            catch (Exception e) {
+                                text.append("\n" + e.getMessage());
+                            }}
+                    });
+
+                    th.start();
                 } catch (Exception e) {
                     text.append("\n" + e.getMessage());
                 }
@@ -97,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     led = !led;
-                    arduino.digitalWrite(13, led);
+                    arduino.digitalWrite(12, led);
                 } catch (Exception e) {
 
                     text.append("\n" + e.getMessage());
@@ -111,39 +103,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void Left() {
 
-
-        arduino.digitalWrite(9, true);
-        arduino.digitalWrite(7, true);
-
-        arduino.digitalWrite(10, false);
-        arduino.digitalWrite(11, true);
-
-        arduino.digitalWrite(5, true);
-        arduino.digitalWrite(6, false);
-
-    }
-
-    public void Right() {
-
-
-        arduino.digitalWrite(9, true);
-        arduino.digitalWrite(7, true);
-
-        arduino.digitalWrite(11, false);
-        arduino.digitalWrite(10, true);
-
-        arduino.digitalWrite(6, true);
-        arduino.digitalWrite(5, false);
-    }
-
-    public void Stop() {
-
-        arduino.digitalWrite(9, false);
-        arduino.digitalWrite(7, false);
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
