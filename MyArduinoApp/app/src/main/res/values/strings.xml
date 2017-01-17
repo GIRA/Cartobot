@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">MyArduinoApp</string>
+    <string name="baud_prompt">Choose Baudrate</string>
+    <string-array name="board_types">
+        <item>ARDUINO UNO</item>
+        <item>ARDUINO NANO</item>
+    </string-array>
+    <string-array name="baud_arrays">
+        <item>9600 baud</item>
+        <item>300 baud</item>
+        <item>1200 baud</item>
+        <item>2400 baud</item>
+        <item>4800 baud</item>
+        <item>19200 baud</item>
+        <item>38400 baud</item>
+        <item>576600 baud</item>
+        <item>744880 baud</item>
+        <item>115200 baud</item>
+        <item>230400 baud</item>
+        <item>250000 baud</item>
+    </string-array>
+
+    <string-array name="baud_rate">
+        <item>300</item>
+        <item>600</item>
+        <item>1200</item>
+        <item>2400</item>
+        <item>4800</item>
+        <item>9600</item>
+        <item>19200</item>
+        <item>38400</item>
+        <item>57600</item>
+        <item>115200</item>
+        <item>230400</item>
+        <item>460800</item>
+        <item>921600</item>
+    </string-array>
+
+    <string-array name="stop_bits">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="data_bits">
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="parity">
+        <item>None</item>
+        <item>Odd</item>
+        <item>Even</item>
+        <item >Mark</item>
+        <item >Space</item>
+    </string-array>
+
+    <string-array name="flow_control">
+        <item>None</item>
+        <item>CTS/RTS</item>
+    </string-array>
+</resources>

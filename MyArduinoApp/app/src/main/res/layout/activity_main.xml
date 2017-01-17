@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.tuta.myarduinoapp.MainActivity">
+
+    <TextView android:id="@+id/tvHelloWorld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!" />
+
+    <Button
+        android:id="@+id/btnOpen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvHelloWorld"
+        android:layout_alignParentLeft="true"
+        android:text="OPEN"
+        android:onClick="btnOpen_click"/>
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvHelloWorld"
+        android:layout_alignParentRight="true"
+        android:text="CLOSE"
+        android:onClick="btnClose_click"/>
+
+    <Spinner android:id="@+id/spBoardType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btnOpen"
+        android:layout_toLeftOf="@id/btnClose"
+        android:entries="@array/board_types"/>
+
+    <EditText
+        android:id="@+id/etSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnClose"/>
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etSend"
+        android:text="SEND"
+        android:onClick="btnSend_click"/>
+
+    <Button
+        android:id="@+id/btnSketchA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSend"
+        android:layout_alignParentLeft="true"
+        android:text="SKETCH A"
+        android:onClick="btnSketchA_click"/>
+
+    <Button
+        android:id="@+id/btnSketchB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSend"
+        android:layout_toRightOf="@id/btnSketchA"
+        android:text="SKETCH B"
+        android:onClick="btnSketchB_click"/>
+
+    <Button
+        android:id="@+id/btnSketchC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSend"
+        android:layout_toRightOf="@id/btnSketchB"
+        android:text="SKETCH C"
+        android:onClick="btnSketchC_click"/>
+
+    <Button
+        android:id="@+id/btnCH340"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSend"
+        android:layout_toRightOf="@id/btnSketchC"
+        android:text="CH 340"
+        android:onClick="btnCH340_click"
+        android:visibility="invisible"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnSketchA"
+        android:scrollbars="vertical">
+        <TextView
+            android:id="@+id/etSerialRead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+</RelativeLayout>
